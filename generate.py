@@ -2,6 +2,7 @@ from random import choice
 from time import time
 from functools import reduce
 import os,sys
+from .py_utils import *
 
 NUMBERS_DAT="numbers.dat"
 SEQ_LEN = 6
@@ -38,12 +39,12 @@ def keep_generating_for(termination_seconds):
             end_time = time()
             counter += 1
 
-            sys.stdout.write ("%s | %s: %d sequences generated...\r" % (secondsToStr(end_time),termination_seconds_str,counter))
+            sys.stdout.write ("%s | %s: %d sequences generated...\r" % (secondsToStr(end_time-start_time),termination_seconds_str,counter))
             
-            
-
             if end_time - start_time >= termination_seconds:
                 break
+    sys.stdout.write("\n")
+    print("Generation completed. Please checkout numbers.dat")
 
 if __name__ == "__main__":
     script, Nseconds = sys.argv
